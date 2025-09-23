@@ -1,18 +1,17 @@
 import tseslint from "typescript-eslint";
 import stylistic from "@stylistic/eslint-plugin";
-// @ts-expect-error Missing types
 import importPlugin from "eslint-plugin-import";
 
 
 export default tseslint.config(
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-  importPlugin.flatConfigs.recommended, // eslint-disable-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+  importPlugin.flatConfigs.recommended,
+  importPlugin.flatConfigs.typescript,
   stylistic.configs.customize({
     arrowParens: true,
     braceStyle: "1tbs",
     commaDangle: "never",
-    flat: true,
     jsx: false,
     quotes: "double",
     semi: true
@@ -31,9 +30,14 @@ export default tseslint.config(
     },
     rules: {
       // TypeScript
-      "@typescript-eslint/no-unused-vars": ["error", { caughtErrorsIgnorePattern: "^_" }],
+      "@typescript-eslint/no-unused-vars": ["error", {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        caughtErrorsIgnorePattern: "^_"
+      }],
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+      "@typescript-eslint/consistent-indexed-object-style": "off",
       "no-console": "error",
 
       // Imports
@@ -44,7 +48,8 @@ export default tseslint.config(
       "@stylistic/yield-star-spacing": ["error", "after"],
       "@stylistic/multiline-ternary": "off",
       "@stylistic/no-mixed-operators": "off",
-      "@stylistic/no-multiple-empty-lines": ["error", { max: 2, maxEOF: 0, maxBOF: 0 }] // Allow max=2 for imports
+      "@stylistic/no-multiple-empty-lines": ["error", { max: 2, maxEOF: 0, maxBOF: 0 }], // Allow max=2 for imports
+      "@stylistic/quote-props": ["error", "as-needed"]
     }
   }
 );

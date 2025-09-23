@@ -8,9 +8,7 @@
   "scripts": {
     "lint": "eslint lib",
     "test": "vitest --watch=false",
-    "type-check": "tsc --noEmit",
-    "prepack": "tsc --project tsconfig.build.json",
-    "postpack": "node ./bin/postpack.js"
+    "type-check": "tsc --noEmit"
   },
   "repository": "github:hyperjump-io/uri",
   "author": "Jason Desrosiers <jdesrosi@gmail.com>",
