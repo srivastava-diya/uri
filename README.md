@@ -75,14 +75,14 @@ A [URI-reference](https://www.rfc-editor.org/rfc/rfc3986#section-4.1) may be
 relative.
 
 * **isUriReference**: (value: string) => boolean
-* **parseUriReference**: (value: string) => IdentifierComponents
+* **parseUriReference**: (value: string) => RelativeIdentifierComponents
 
 ### absolute-URI
 An [absolute-URI](https://www.rfc-editor.org/rfc/rfc3986#section-4.3) is not
 relative an does not include a fragment.
 
 * **isAbsoluteUri**: (value: string) => boolean
-* **parseAbsoluteUri**: (value: string) => IdentifierComponents
+* **parseAbsoluteUri**: (value: string) => AbsoluteIdentifierComponents
 
 ### IRI
 An IRI is not relative and may include a fragment.
@@ -97,24 +97,44 @@ An IRI is not relative and may include a fragment.
 An IRI-reference may be relative.
 
 * **isIriReference**: (value: string) => boolean
-* **parseIriReference**: (value: string) => IdentifierComponents
+* **parseIriReference**: (value: string) => RelativeIdentifierComponents
 
 ### absolute-IRI
 An absolute-IRI is not relative an does not include a fragment.
 
 * **isAbsoluteIri**: (value: string) => boolean
-* **parseAbsoluteIri**: (value: string) => IdentifierComponents
+* **parseAbsoluteIri**: (value: string) => AbsoluteIdentifierComponents
 
 ### Types
 * **IdentifierComponents**
   * **scheme**: string
   * **authority**: string
-  * **userinfo**: string
+  * **userinfo**: string (optional)
   * **host**: string
-  * **port**: string
+  * **port**: string (optional)
   * **path**: string
-  * **query**: string
-  * **fragment**: string
+  * **query**: string (optional)
+  * **fragment**: string (optional)
+
+* **RelativeIdentifierComponents**
+  * **scheme**: string (optional)
+  * **authority**: string (optional)
+  * **userinfo**: string (optional)
+  * **host**: string (optional)
+  * **port**: string (optional)
+  * **path**: string
+  * **query**: string (optional)
+  * **fragment**: string (optional)
+
+* **AbsoluteIdentifierComponents**
+  * **scheme**: string
+  * **authority**: string
+  * **userinfo**: string (optional)
+  * **host**: string
+  * **port**: string (optional)
+  * **path**: string
+  * **query**: string (optional)
+
 
 ## Contributing
 ### Tests
